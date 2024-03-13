@@ -26,7 +26,7 @@ export function App() {
         setReducaoValues(newValues)
     }
 
-    function handleSubmit(event: React.FormEvent) {
+    function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         event.preventDefault()
 
         console.log(penaValues, reducaoValues)
@@ -55,13 +55,13 @@ export function App() {
         <div className="container">
             <div className="div-blocks">
 
-                <Block color="#F6E4E2" title="Pena" values={penaValues} onChange={handlePenaValues} />
+                <Block color="#F3C6C1" title="Pena" values={penaValues} onChange={handlePenaValues} />
 
-                <Block color="#C1C3D2" title="Redução" values={reducaoValues} onChange={handleReducaoValues} />
+                <Block color="#B9BEE0" title="Redução" values={reducaoValues} onChange={handleReducaoValues} />
             </div>
 
             <div className="div-button">
-                <Button title="Calcular" onSubmit={handleSubmit} />
+                <Button title="Calcular" onClick={handleSubmit} />
 
                 {resultMessage && (
                     <Result message={resultMessage} />

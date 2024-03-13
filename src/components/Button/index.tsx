@@ -2,11 +2,11 @@ import "./styles.css"
 
 type Props = {
     title: string,
-    onSubmit: () => void
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export function Button({ title, onSubmit }: Props) {
+export function Button({ title, onClick}: Props) {
     return (
-        <button onClick={onSubmit}>{title}</button>
+        <button onClick={onClick}>{title}</button>
     )
 }
