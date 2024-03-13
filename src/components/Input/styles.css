@@ -1,0 +1,15 @@
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 180px;
+}
+
+input {
+  width: 40px;
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid #000000;
+  outline: none;
+  text-align: center;
+}

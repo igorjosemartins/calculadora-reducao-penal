@@ -1,9 +1,13 @@
 import "./styles.css";
 
-export function Result() {
+type Props = {
+    message: string
+}
+
+export function Result({ message }: Props) {
     return (
         <div className="result">
-            <h1>resultado</h1>
+            <h3>{message}</h3>
         </div>
     )
 }
