@@ -1,16 +1,17 @@
 import "./styles.css";
 
 type Props = {
-    name: string,
+    // name: string,
     type: string,
     dateFormat: string,
+    value: string,
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function Input({ name, type, dateFormat }: Props) {
-
+export function Input({ type, dateFormat, value, onChange }: Props) {
     return (
         <label>
-            Digite quantos {dateFormat} : <input name={name} type={type} />
+            Digite quantos {dateFormat} : <input type={type} value={value} onChange={onChange}/>
         </label>
     )
 }
