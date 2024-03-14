@@ -6,34 +6,38 @@ interface date {
 
 export function calculaReducaoPenal(pena: date, reducao: date) {
 
-    const initialDate = (pena.years*365) + (pena.months*30) + pena.days;
-    const finalDate = (reducao.years*365) + (reducao.months*30) + reducao.days;
+    let years = Math.floor(pena.years - reducao.years);
+    let months = Math.floor(pena.months - reducao.months);
+    let days = Math.floor(pena.days - reducao.days);
 
-    const result = {
-        "years": parseInt(((initialDate - finalDate) / 365).toString().split(".")[0]),
-        "months": parseInt(((initialDate - finalDate) / 30).toString().split(".")[0]),
-        "days": ((initialDate - finalDate) % 30)
+    if (years < 0) {
+        return "ta doida veia a redução é maior que a pena";
     }
 
-    if (result.months >= 12) {
-        result.years += parseInt((result.months/12).toString().split(".")[0])
-        result.months = (result.months % 12)
+    if (months < 0) {
+        months += 12;
+        years--;
     }
 
-    let yearMessage = result.years === 1 ? "ano" : "anos";
-    let monthMessage = result.months === 1 ? "mês": "meses";
-    let dayMessage = result.days === 1 ? "dia" : "dias";
+    if (days < 0) {
+        days += 30;
+        months--;
+    }
 
-    if (result.years === 0 && result.months === 0) {
-        return `Diferença de : ${result.days} dias`;
+    let yearMessage = years === 1 ? "ano" : "anos";
+    let monthMessage = months === 1 ? "mês": "meses";
+    let dayMessage = days === 1 ? "dia" : "dias";
+
+    if (years === 0 && months === 0) {
+        return `Diferença de : ${days} dias`;
     
-    } else if (result.years === 0) {
-        return `Diferença de : ${result.months} ${monthMessage} e ${result.days} ${dayMessage}`;
+    } else if (years === 0) {
+        return `Diferença de : ${months} ${monthMessage} e ${days} ${dayMessage}`;
     
-    } else if (result.months === 0) {
-        return `Diferença de : ${result.years} ${yearMessage} e ${result.days} ${dayMessage}`
+    } else if (months === 0) {
+        return `Diferença de : ${years} ${yearMessage} e ${days} ${dayMessage}`;
     
     } else {
-        return `Diferença de : ${result.years} ${yearMessage} ${result.months} ${monthMessage} e ${result.days} ${dayMessage}`;
+        return `Diferença de : ${years} ${yearMessage} ${months} ${monthMessage} e ${days} ${dayMessage}`;
     }
 }
