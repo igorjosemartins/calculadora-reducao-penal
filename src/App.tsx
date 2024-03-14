@@ -30,7 +30,7 @@ export function App() {
         event.preventDefault()
 
         if (penaValues.includes(NaN) || reducaoValues.includes(NaN)) {
-            return toast.error("Todos os campos devem ser números válidos", {
+            return toast.error("preenche os campos direito momoziiiiiii 👺👺👺💀💀💀", {
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

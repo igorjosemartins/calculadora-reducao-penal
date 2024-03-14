@@ -11,7 +11,7 @@ export function calculaReducaoPenal(pena: date, reducao: date) {
     let days = Math.floor(pena.days - reducao.days);
 
     if (years < 0) {
-        return "ta doida veia a redução é maior que a pena";
+        return "ta doida veia? a redução é maior que a pena 🤨🤨🤨";
     }
 
     if (months < 0) {
