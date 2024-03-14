@@ -11,16 +11,12 @@ type Props = {
 export function Input({ type, dateFormat, value, onChange }: Props) {
     return (
         <table className="input-block">
-            <tbody>
-                <tr>
-                    <td>
-                        <label>Digite quantos {dateFormat} :</label>
-                    </td>
-                    <td>
-                        <input type={type} value={value} onChange={onChange} />
-                    </td>
-                </tr>
-            </tbody>
+            <td>
+                <label>Digite quantos {dateFormat} :</label>
+            </td>
+            <td>
+                <input type={type} value={value} onChange={onChange} />
+            </td>
         </table>
     )
 }

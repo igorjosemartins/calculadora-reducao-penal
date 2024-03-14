@@ -1,5 +1,5 @@
 import "./App.css"
-import { calculaReducaoPenal } from "./calculo";
+import { calculaReducaoPenal } from "./utils/calculo";
 import { Block } from "./components/Block";
 import { Button } from "./components/Button";
 import { Result } from "./components/Result";
@@ -29,11 +29,8 @@ export function App() {
     function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         event.preventDefault()
 
-        console.log(penaValues, reducaoValues)
-
         if (penaValues.includes(NaN) || reducaoValues.includes(NaN)) {
             return toast.error("Todos os campos devem ser números válidos", {
-                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
