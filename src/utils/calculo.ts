@@ -6,6 +6,13 @@ interface date {
 
 export function calculaReducaoPenal(pena: date, reducao: date) {
 
+    const penaArray = Object.values(pena);
+    const reducaoArray = Object.values(reducao);
+
+    if (penaArray.every((value) =>  value == 0) && reducaoArray.every((value) => value == 0 )) {
+        return "ta tudo zero momoziiiiii 🤨🤨🤨";
+    }
+
     let years = Math.floor(pena.years - reducao.years);
     let months = Math.floor(pena.months - reducao.months);
     let days = Math.floor(pena.days - reducao.days);
@@ -15,13 +22,13 @@ export function calculaReducaoPenal(pena: date, reducao: date) {
     }
 
     if (months < 0) {
-        months += 12;
         years--;
+        months += 12;
     }
 
     if (days < 0) {
-        days += 30;
         months--;
+        days += 30;
     }
 
     let yearMessage = years === 1 ? "ano" : "anos";

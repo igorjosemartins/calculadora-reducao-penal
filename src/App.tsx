@@ -12,6 +12,7 @@ export function App() {
 
     const [penaValues, setPenaValues] = useState<number[]>([0, 0, 0])
     const [reducaoValues, setReducaoValues] = useState<number[]>([0, 0, 0])
+    // const [aumentoValues, setAumentoValues] = useState<number[]>([0, 0, 0])
     const [resultMessage, setResultMessage] = useState<string>("")
 
     function handlePenaValues(index: number, value: number) {
@@ -25,6 +26,12 @@ export function App() {
         newValues[index] = value
         setReducaoValues(newValues)
     }
+
+    // function handleAumentoValues(index: number, value: number) {
+    //     const newValues = [...aumentoValues]
+    //     newValues[index] = value
+    //     setReducaoValues(newValues)
+    // }
 
     function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         event.preventDefault()
@@ -56,6 +63,8 @@ export function App() {
                 <Block color="#F3C6C1" title="Pena" values={penaValues} onChange={handlePenaValues} />
 
                 <Block color="#B9BEE0" title="Redução" values={reducaoValues} onChange={handleReducaoValues} />
+
+                {/* <Block color="#B9BEE0" title="Aumento" values={aumentoValues} onChange={handleAumentoValues} /> */}
             </div>
 
             <div className="div-button">
