@@ -5,15 +5,13 @@ import { Button } from "./components/Button";
 import { Result } from "./components/Result";
 import { useState } from "react";
 
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
 export function App() {
 
     const [penaValues, setPenaValues] = useState<number[]>([0, 0, 0])
     const [reducaoValues, setReducaoValues] = useState<number[]>([0, 0, 0])
     // const [aumentoValues, setAumentoValues] = useState<number[]>([0, 0, 0])
     const [resultMessage, setResultMessage] = useState<string>("")
+    const [resultType, setResultType] = useState<string>("")
 
     function handlePenaValues(index: number, value: number) {
         const newValues = [...penaValues]
@@ -36,22 +34,12 @@ export function App() {
     function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         event.preventDefault()
 
-        if (penaValues.includes(NaN) || reducaoValues.includes(NaN)) {
-            return toast.error("preenche os campos direito momoziiiiiii 👺👺👺💀💀💀", {
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored"
-            })
-        }
-
         const result = calculaReducaoPenal(
             { years: penaValues[0], months: penaValues[1], days: penaValues[2] },
             { years: reducaoValues[0], months: reducaoValues[1], days: reducaoValues[2] }
         );
+
+        result.includes("👺") ? setResultType("error")  : setResultType("")
 
         setResultMessage(result)
     }
@@ -71,10 +59,9 @@ export function App() {
                 <Button title="Calcular" onClick={handleSubmit} />
 
                 {resultMessage && (
-                    <Result message={resultMessage} />
+                    <Result message={resultMessage} type={resultType}/>
                 )}
             </div>
-            <ToastContainer />
         </div>
     )
 }
